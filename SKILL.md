@@ -50,6 +50,16 @@ The goal is to turn a working scaffold into a complete, classroom-usable interac
    - Commit intentional changes in the G: lesson repo.
    - For remote deployment, use GitHub CLI to create/push a repo named exactly like the local folder, e.g. `gh repo create <githubUser>/<projectName> --public --source . --remote origin --push`.
    - Enable GitHub Pages from `main` branch root `/` and verify `https://<githubUser>.github.io/<projectName>/`.
+7. Share (optional): after a successful deploy, offer to generate a bilingual (中文 + English) Facebook announcement post. See `## Bilingual Facebook Post` below.
+
+## Bilingual Facebook Post
+
+When the user asks for a 臉書文／FB文／社群貼文／宣傳文／IG文／分享文, or right after a deploy when offering to share results, produce a bilingual Chinese + English Facebook post.
+
+- Load `references/facebook-post.md` for the full structure, tone rules, and the copy-button card template.
+- Always include the real repo / GitHub Pages URL (never `example.com`).
+- Render an interactive copy card with the `show_widget` tool: a top-right "複製全部" button plus per-language copy buttons, each flashing ✓ on success.
+- Optionally also save the same card as `share/facebook-post.html` inside the lesson project so it can ship to GitHub Pages.
 
 ## Skill Self-Publish
 
