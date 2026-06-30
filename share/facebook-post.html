@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>臉書文案 · Facebook post — digital-teaching-material-claude</title>
+<style>
+  :root {
+    --bg: #f4f3ee;
+    --card: #ffffff;
+    --surface: #f1efe8;
+    --text: #2c2c2a;
+    --muted: #5f5e5a;
+    --info-bg: #e6f1fb;
+    --info-text: #0c447c;
+    --border: rgba(0,0,0,0.12);
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a; --card: #262624; --surface: #2f2f2c;
+      --text: #ededeb; --muted: #b4b2a9;
+      --info-bg: #0c447c; --info-text: #b5d4f4;
+      --border: rgba(255,255,255,0.14);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.7; padding: 24px 16px;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px 20px 24px;
+  }
+  .head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+  .title { font-size: 17px; font-weight: 500; }
+  button {
+    font: inherit; font-size: 14px; cursor: pointer; color: var(--text);
+    background: transparent; border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 14px; transition: background .15s;
+  }
+  button:hover { background: var(--surface); }
+  button:active { transform: scale(0.98); }
+  .seg { margin-bottom: 20px; }
+  .seg:last-child { margin-bottom: 0; }
+  .seg-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .tag { font-size: 13px; font-weight: 500; color: var(--info-text); background: var(--info-bg); padding: 3px 10px; border-radius: 8px; }
+  .post {
+    white-space: pre-wrap; font-size: 15px; background: var(--surface);
+    border-radius: 8px; padding: 16px 18px; word-break: break-word;
+  }
+  .post a { color: var(--info-text); }
+  .small { font-size: 13px; padding: 4px 10px; }
+  .foot { max-width: 680px; margin: 14px auto 0; font-size: 12px; color: var(--muted); text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="head">
+      <span class="title">臉書文案 · Facebook post</span>
+      <button id="copy-all">複製全部</button>
+    </div>
+
+    <div class="seg">
+      <div class="seg-head">
+        <span class="tag">中文</span>
+        <button class="copy-one small" data-target="zh">複製</button>
+      </div>
+      <div id="zh" class="post">🎓✨ 來分享一個讓我教學備課大躍進的小成果！
+
+最近我把自己做「國小互動數位教材」的整套工作流程，包成了一個 AI 技能包（skill），原本是給 Codex 用的，今天直接請 Claude Code 幫我整包改寫、搬家、重新部署，前後不用十分鐘就搞定 👏
+
+這個技能包能做什麼？
+📌 自動補完教材七大分頁：學習任務、原理探索、互動實驗、動畫模擬、生活應用、闖關大挑戰、自學資源
+📌 清掉所有「待補 / 範例題」這種佔位文字
+📌 強化原生 SVG／CSS 互動動畫（不是貼張圖混過去 😆）
+📌 自動產生測驗題、生活應用卡、教師文件
+📌 一鍵建立 GitHub repo、部署到 GitHub Pages，學生打開網址就能玩
+
+最有感的是——
+所有教材都統一存在我的雲端硬碟資料夾，改完直接同步、直接上線，再也不用「檔案到底是哪一版」的崩潰時刻 🥹
+
+AI 不是拿來取代老師，
+而是把備課裡那些重複、瑣碎的工，通通交給它，
+讓我們把時間留給真正重要的事：陪孩子學習。 ❤️
+
+🔗 技能包 GitHub（歡迎自取／參考）：
+https://github.com/prayer168/digital-teaching-material-claude
+
+#數位教材 #AI教學 #ClaudeCode #國小自然 #互動教學 #備課神器 #教師日常</div>
+    </div>
+
+    <div class="seg">
+      <div class="seg-head">
+        <span class="tag">English</span>
+        <button class="copy-one small" data-target="en">Copy</button>
+      </div>
+      <div id="en" class="post">🎓✨ Sharing a small win that's seriously leveled up my lesson prep!
+
+I packaged my entire workflow for building interactive digital teaching materials for elementary students into an AI skill. It was originally made for Codex — and today I had Claude Code rewrite, migrate, and redeploy the whole package in under ten minutes 👏
+
+What does this skill do?
+📌 Auto-completes the seven lesson tabs: Learning Mission, Principle Exploration, Interactive Experiment, Animation Simulation, Real-life Application, Challenge Quiz, Self-study Resources
+📌 Strips out every "to-be-filled / sample question" placeholder
+📌 Enhances native SVG/CSS interactive animations (no faking it with a static image 😆)
+📌 Auto-generates quiz questions, real-life application cards, and teacher docs
+📌 One click to create a GitHub repo and deploy to GitHub Pages — students just open a URL and play
+
+The best part —
+All my materials live in one Google Drive folder. Edit, sync, publish, done. No more "wait, which version is this?!" meltdowns 🥹
+
+AI isn't here to replace teachers.
+It takes the repetitive, tedious parts of prep off our plate,
+so we can spend our time on what truly matters: being there for our kids. ❤️
+
+🔗 Skill on GitHub (feel free to use / fork):
+https://github.com/prayer168/digital-teaching-material-claude
+
+#DigitalTeaching #AIinEducation #ClaudeCode #ElementaryScience #InteractiveLearning #LessonPrep #TeacherLife</div>
+    </div>
+  </div>
+  <p class="foot">digital-teaching-material-claude · 點按鈕即可複製文案</p>
+</div>
+
+<script>
+(function () {
+  function flash(btn, ok) {
+    var prev = btn.textContent;
+    btn.textContent = ok;
+    setTimeout(function () { btn.textContent = prev; }, 1600);
+  }
+  function fallback(text, btn, ok) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); flash(btn, ok); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  function copy(text, btn, ok) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { flash(btn, ok); }).catch(function () { fallback(text, btn, ok); });
+    } else { fallback(text, btn, ok); }
+  }
+  var zh = document.getElementById('zh').textContent;
+  var en = document.getElementById('en').textContent;
+  document.getElementById('copy-all').addEventListener('click', function () {
+    copy(zh + '\n\n— — —\n\n' + en, this, '已複製！');
+  });
+  document.querySelectorAll('.copy-one').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = this.getAttribute('data-target');
+      copy(document.getElementById(t).textContent, this, t === 'zh' ? '已複製！' : 'Copied!');
+    });
+  });
+})();
+</script>
+</body>
+</html>
