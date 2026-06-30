@@ -52,17 +52,14 @@ The goal is to turn a working scaffold into a complete, classroom-usable interac
    - Enable GitHub Pages from `main` branch root `/` and verify `https://<githubUser>.github.io/<projectName>/`.
 7. Share (optional): after a successful deploy, offer to generate a bilingual (中文 + English) Facebook announcement post. See `## Bilingual Facebook Post` below.
 
-## Bilingual Facebook Post (integrates the `social-post` skill)
+## Bilingual Facebook Post
 
-When the user asks for a 臉書文／FB文／社群貼文／宣傳文／IG文／分享文, or right after a deploy when offering to share results, produce a bilingual Chinese + English Facebook post. This step **combines with the `social-post` skill** (by 駱君昊 Hao, MIT) for viral formulas and voice rules.
+When the user asks for a 臉書文／FB文／社群貼文／宣傳文／IG文／分享文, or right after a deploy when offering to share results, produce a bilingual Chinese + English Facebook post.
 
-- Load `references/facebook-post.md` for the full integration flow, formula selection, copy-card template, and fallback.
-- If `~/.claude/skills/social-post/` is installed, route the post through it: apply `style_profile.md` voice if present, pick a formula (default **F15 mini** for a freshly-shipped lesson; **F6b** for a big launch; **F29** for a re-ship), and follow its hard rules from `social-post/references/rules.md`. If it is not installed, use the fallback template and mention it can be installed for stronger copy.
-- 🚨 **R25 — never put the repo / GitHub Pages URL in the FB or Threads body.** Put it in the 📌 first comment instead; use an R35 keyword CTA in the body ("留言『教材』我把連結傳你"). The real URL must be a true link (never `example.com`).
-- Apply R34 (real voice, no AI-tone abstract words), R36 (demo > claim — cite the seven tabs, quiz count, live URL), R37 (value-prop-lead opening).
-- Render an interactive copy card with `show_widget`: three blocks (中文正文 / English body / 📌 留言連結), each with its own copy button plus a top-right "複製全部", each flashing ✓ on success.
-- Optionally save the same card as `share/facebook-post.html` inside the lesson project so it can ship to GitHub Pages.
-- This skill only **generates copy**. If the user wants to actually auto-publish to Facebook, that is the `social-post` skill's Phase 2 — and its safety gate requires an explicit user "確認" before publishing; never bypass it.
+- Load `references/facebook-post.md` for the full structure, tone rules, and the copy-button card template.
+- Always include the real repo / GitHub Pages URL (never `example.com`).
+- Render an interactive copy card with the `show_widget` tool: a top-right "複製全部" button plus per-language copy buttons, each flashing ✓ on success.
+- Optionally also save the same card as `share/facebook-post.html` inside the lesson project so it can ship to GitHub Pages.
 
 ## Skill Self-Publish
 
