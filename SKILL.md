@@ -1,7 +1,7 @@
 ---
 name: digital-teaching-material-claude
 description: >-
-  Polish, complete, verify, and deploy elementary interactive digital teaching materials after project kickoff. Use when Claude Code is asked to turn a generated Vite/HTML/CSS/JS lesson scaffold into a complete classroom-ready教材, fill all seven tabs, remove placeholder content, improve native SVG/CSS animations instead of adding unrelated static banners, add quizzes/resources/references/docs, verify builds, work from the Google Drive G:教材根目錄, commit, push, create a new same-name GitHub repo, or prepare GitHub Pages.
+  Polish, complete, verify, and deploy elementary interactive digital teaching materials after project kickoff. Use when Claude Code is asked to turn a generated Vite/HTML/CSS/JS lesson scaffold into a complete classroom-ready教材, fill all seven tabs, remove placeholder content, improve native SVG/CSS animations instead of adding unrelated static banners, add quizzes/resources/references/docs, verify builds, work from the Google Drive D:教材根目錄, commit, push, create a new same-name GitHub repo, or prepare GitHub Pages.
 ---
 
 # 數位教材開發 Claude Code 版
@@ -12,8 +12,8 @@ The goal is to turn a working scaffold into a complete, classroom-usable interac
 
 ## Core Rules
 
-- The local source-of-truth folder for every digital lesson is `G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>`. The `<projectName>` folder name must be the lesson's English kebab-case name.
-- Work directly in the G: lesson folder for static HTML/CSS/JS changes and documentation. If a Vite/npm workflow needs `node_modules`, copy to a temporary C: work folder for install/build only, then sync source changes back to G: excluding `node_modules`, `dist`, `.git`, and dev logs.
+- The local source-of-truth folder for every digital lesson is `D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>`. The `<projectName>` folder name must be the lesson's English kebab-case name.
+- Work directly in the D: lesson folder for static HTML/CSS/JS changes and documentation. If a Vite/npm workflow needs `node_modules`, copy to a temporary C: work folder for install/build only, then sync source changes back to D: excluding `node_modules`, `dist`, `.git`, and dev logs.
 - When deploying remotely, create a new GitHub repo whose name exactly matches the local folder name. Do not deploy a new lesson as a subfolder inside an unrelated existing repo unless the user explicitly asks.
 - Keep the seven-tab app structure: 學習任務、原理探索、互動實驗、動畫模擬、生活應用、闖關大挑戰、自學資源.
 - Fill content, not just structure. Remove all `待補`, `範例`, `示範題`, and placeholder text.
@@ -47,7 +47,7 @@ The goal is to turn a working scaffold into a complete, classroom-usable interac
      `python "%USERPROFILE%\.claude\skills\teaching-material-kickoff\scripts\verify.py" --project "<project>"`
    - Run `npm.cmd run build` only in a C: temporary copy when the project needs npm/node_modules.
 6. Version and deploy:
-   - Commit intentional changes in the G: lesson repo.
+   - Commit intentional changes in the D: lesson repo.
    - For remote deployment, use GitHub CLI to create/push a repo named exactly like the local folder, e.g. `gh repo create <githubUser>/<projectName> --public --source . --remote origin --push`.
    - Enable GitHub Pages from `main` branch root `/` and verify `https://<githubUser>.github.io/<projectName>/`.
 7. Share (optional): after a successful deploy, offer to generate a bilingual (中文 + English) Facebook announcement post. See `## Bilingual Facebook Post` below.
@@ -60,6 +60,11 @@ When the user asks for a 臉書文／FB文／社群貼文／宣傳文／IG文／
 - Always include the real repo / GitHub Pages URL (never `example.com`).
 - Render an interactive copy card with the `show_widget` tool: a top-right "複製全部" button plus per-language copy buttons, each flashing ✓ on success.
 - Optionally also save the same card as `share/facebook-post.html` inside the lesson project so it can ship to GitHub Pages.
+- 縮圖必做（og cover）: a Facebook post is not complete without a share thumbnail. Before (or together with) delivering the post:
+  1. Generate `assets/images/og-cover.png` (1200×630 PNG, ≤300KB; never SVG — Facebook rejects it). Use Pillow with Windows fonts (`C:/Windows/Fonts/msjhbd.ttc` / `msjh.ttc`); the reusable generator lives at `%USERPROFILE%\.claude\skills\k12-interactive-learning-builder\templates\make-og-cover.py` — copy it, edit CONFIG (brand chip, 中文大標/副標, English tagline, feature tag chips, gradient colors matching the lesson theme) and rewrite `draw_theme_art()` with simple recognizable geometry for the lesson topic.
+  2. Add og/twitter meta to **every** HTML page (including `share/facebook-post.html`), with `og:image` as the absolute GitHub Pages URL plus `og:image:width/height 1200/630` and `twitter:card summary_large_image`.
+  3. After deploy, `curl` the og-cover URL for HTTP 200 and confirm the page source contains `og:image`.
+  4. Remind the user: if the URL was shared before, refresh Facebook's cache at https://developers.facebook.com/tools/debug/ ("再次抓取").
 
 ## Skill Self-Publish
 

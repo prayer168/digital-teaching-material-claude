@@ -12,6 +12,21 @@
 1. **互動複製卡片**：用 `show_widget` 工具渲染下方的 HTML 卡片，右上角有「複製全部」，中英文各自也有獨立複製鈕，點擊後顯示 ✓ 已複製。
 2. **存成可部署檔案**（選用）：把同一份 HTML 存成教材專案內的 `share/facebook-post.html`，可隨教材一起部署到 GitHub Pages，方便日後直接開網址複製。
 
+## 分享縮圖（og cover，必做）
+
+臉書文一定要搭配**分享縮圖**，否則連結貼到 Facebook / LINE 只會出現灰色純文字卡片：
+
+1. 產生 `assets/images/og-cover.png`：**1200×630** PNG（不可 SVG，Facebook 不支援），300KB 以內。
+   用 Pillow + 微軟正黑體（`C:/Windows/Fonts/msjhbd.ttc`）；現成產生器在
+   `%USERPROFILE%\.claude\skills\k12-interactive-learning-builder\templates\make-og-cover.py`，
+   複製後改 CONFIG（品牌 chip、中文大標/副標、英文標語、特色 tag chips、配合教材主色的漸層），
+   並改寫 `draw_theme_art()` 用簡潔幾何畫出教材主題（例：地球儀＋無人機、磁鐵＋線圈）。
+2. **所有** HTML 頁面（含 `share/facebook-post.html`）加入 og / twitter meta，
+   `og:image` 一律用 GitHub Pages 絕對網址，並附 `og:image:width/height` 1200/630 與
+   `twitter:card = summary_large_image`。
+3. 部署後用 `curl` 驗證縮圖網址回 200、頁面原始碼含 `og:image`。
+4. 若網址先前分享過，提醒使用者到 https://developers.facebook.com/tools/debug/ 按「再次抓取」更新快取。
+
 ## 文案結構（中英對照）
 
 兩種語言都遵循同一結構，逐段對應：

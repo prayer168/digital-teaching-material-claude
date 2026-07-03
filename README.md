@@ -18,7 +18,7 @@
 所有新教材的正式本地端來源都放在：
 
 ```text
-G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>
+D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>
 ```
 
 其中 `<projectName>` 是教材英文名稱，使用 kebab-case，例如：
@@ -36,7 +36,7 @@ light-shadow-inquiry
 例如：
 
 ```text
-G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\light-shadow-inquiry
+D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\light-shadow-inquiry
 https://github.com/prayer168/light-shadow-inquiry
 https://prayer168.github.io/light-shadow-inquiry/
 ```
@@ -80,7 +80,7 @@ C:\Users\<你的使用者名稱>\.claude\skills\digital-teaching-material-claude
 或：
 
 ```text
-把 G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\light-shadow-inquiry 補齊、驗證並部署到 GitHub Pages。
+把 D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\light-shadow-inquiry 補齊、驗證並部署到 GitHub Pages。
 ```
 
 Claude Code 會依照 skill 流程執行：
@@ -132,7 +132,7 @@ https://github.com/prayer168/digital-teaching-material-claude
 
 ## 注意事項
 
-- Google Drive G: 目錄不要直接跑 `npm install`，避免 `node_modules` 損壞。
-- 若教材需要 Vite/npm build，請暫時複製到 `C:\dev\<projectName>` 進行 install/build，再把原始碼同步回 G:。
+- Google Drive D: 目錄不要直接跑 `npm install`，避免 `node_modules` 損壞。
+- 若教材需要 Vite/npm build，請暫時複製到 `C:\dev\<projectName>` 進行 install/build，再把原始碼同步回 D:。
 - 每次部署前都要確認沒有 placeholder、範例題或待補內容。
 - 修改 skill 後要同步到 GitHub，避免本地與遠端版本不一致。

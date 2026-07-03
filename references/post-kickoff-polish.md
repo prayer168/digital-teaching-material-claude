@@ -5,17 +5,17 @@ Use this reference when completing or revising a scaffolded elementary interacti
 ## Local Folder and Deploy Pattern
 
 - The local source-of-truth folder for every digital lesson is:
-  `G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>`
+  `D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>`
 - `<projectName>` is the lesson's English kebab-case name and must also be the GitHub repo name.
-- Static HTML/CSS/JS lessons can be edited, validated, committed, and deployed directly from the G: folder.
+- Static HTML/CSS/JS lessons can be edited, validated, committed, and deployed directly from the D: folder.
 - If a project needs npm/node_modules, create a temporary C: copy only for install/build:
 
 ```powershell
-robocopy "G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>" "C:\dev\<projectName>" /E /XD node_modules dist .git /XF vite-dev.out.log vite-dev.err.log
+robocopy "D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>" "C:\dev\<projectName>" /E /XD node_modules dist .git /XF vite-dev.out.log vite-dev.err.log
 cd "C:\dev\<projectName>"
 npm.cmd install
 npm.cmd run build
-robocopy "C:\dev\<projectName>" "G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>" /E /XD node_modules dist .git /XF vite-dev.out.log vite-dev.err.log
+robocopy "C:\dev\<projectName>" "D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>" /E /XD node_modules dist .git /XF vite-dev.out.log vite-dev.err.log
 ```
 
 ## Complete Content Standards
@@ -75,8 +75,8 @@ Avoid:
 Run from any folder:
 
 ```powershell
-rg "待補|範例題|示範題|占位" "G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>" -g "!node_modules" -g "!dist"
-python "$env:USERPROFILE\.claude\skills\teaching-material-kickoff\scripts\verify.py" --project "G:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>"
+rg "待補|範例題|示範題|占位" "D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>" -g "!node_modules" -g "!dist"
+python "$env:USERPROFILE\.claude\skills\teaching-material-kickoff\scripts\verify.py" --project "D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>"
 ```
 
 If a build is needed, run it from a C: temporary copy:
@@ -100,7 +100,7 @@ Read the real error and fix it. Common issue: CSS minifiers may reject invalid S
 
 ## Git / Push Pattern
 
-- Commit in the G: lesson folder.
+- Commit in the D: lesson folder.
 - Remote deployment always creates or uses a dedicated repo whose name exactly matches the local folder name:
   `<githubUser>/<projectName>`.
 - If no remote exists, use GitHub CLI when authenticated:
@@ -110,7 +110,7 @@ gh repo create <user>/<projectName> --public --source . --remote origin --push
 gh api --method POST repos/<user>/<projectName>/pages -f "source[branch]=main" -f "source[path]=/"
 ```
 
-- If remote exists, verify that it points to the same-name repo before pushing:
+- If remote exists, verify that it points to the same-name repo before pushinD:
 
 ```powershell
 git push
