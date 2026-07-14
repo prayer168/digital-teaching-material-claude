@@ -70,19 +70,70 @@ Avoid:
 - Making text overlap animation.
 - Overly cartoonish faces or fantasy plant parts.
 
+## Social Preview Card Pattern
+
+Every deployable lesson should share cleanly on Facebook, LINE, X, and other platforms.
+
+- Create or reuse one clear 1200x630 PNG preview image.
+- The image should show the lesson name, subject signal, key interaction labels, and the deployed URL when helpful.
+- Put the deployable image at `public/img/og/<projectName>.png`.
+- Add these tags to `index.html` inside `<head>`:
+  - `meta name="description"`
+  - `og:locale`, `og:type`, `og:site_name`, `og:title`, `og:description`, `og:url`
+  - `og:image`, `og:image:secure_url`, `og:image:type`, `og:image:width`, `og:image:height`, `og:image:alt`
+  - `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
+- Use absolute deployed URLs for `og:url`, `og:image`, `og:image:secure_url`, and `twitter:image`.
+- For GitHub Pages, the URL pattern is:
+
+```text
+https://<githubUser>.github.io/<repoName>/
+https://<githubUser>.github.io/<repoName>/img/og/<projectName>.png
+```
+
+Example:
+
+```html
+<meta name="description" content="互動式自然科學數位教材，透過操作、觀察與闖關理解核心概念。" />
+<meta property="og:locale" content="zh_TW" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="教材名稱" />
+<meta property="og:title" content="教材名稱｜互動數位教材" />
+<meta property="og:description" content="透過互動實驗、動畫模擬與闖關挑戰學習自然科學概念。" />
+<meta property="og:url" content="https://prayer168.github.io/<repoName>/" />
+<meta property="og:image" content="https://prayer168.github.io/<repoName>/img/og/<projectName>.png" />
+<meta property="og:image:secure_url" content="https://prayer168.github.io/<repoName>/img/og/<projectName>.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="教材名稱社群分享預覽圖，呈現主要互動功能與學習主題。" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="教材名稱｜互動數位教材" />
+<meta name="twitter:description" content="透過互動實驗、動畫模擬與闖關挑戰學習自然科學概念。" />
+<meta name="twitter:image" content="https://prayer168.github.io/<repoName>/img/og/<projectName>.png" />
+```
+
+After deployment, use Facebook Sharing Debugger to scrape the URL again when the thumbnail is stale:
+`https://developers.facebook.com/tools/debug/`
+
 ## Verification Commands
 
 Run from any folder:
 
 ```powershell
 rg "待補|範例題|示範題|占位" "D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>" -g "!node_modules" -g "!dist"
-python "$env:USERPROFILE\.claude\skills\teaching-material-kickoff\scripts\verify.py" --project "D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>"
+python "%USERPROFILE%\.claude\skills\teaching-material-kickoff\scripts\verify.py" --project "D:\我的雲端硬碟\google drive\000000000backup\0000000000數位教材\<projectName>"
 ```
 
 If a build is needed, run it from a C: temporary copy:
 
 ```powershell
 npm.cmd run build
+```
+
+Confirm the social image survives the build:
+
+```powershell
+Test-Path "dist\img\og\<projectName>.png"
 ```
 
 Read the real error and fix it. Common issue: CSS minifiers may reject invalid SVG/CSS fallback syntax such as `url(#id, fallback)`.
@@ -110,7 +161,7 @@ gh repo create <user>/<projectName> --public --source . --remote origin --push
 gh api --method POST repos/<user>/<projectName>/pages -f "source[branch]=main" -f "source[path]=/"
 ```
 
-- If remote exists, verify that it points to the same-name repo before pushinD:
+- If remote exists, verify that it points to the same-name repo before pushing:
 
 ```powershell
 git push
