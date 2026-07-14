@@ -12,7 +12,7 @@ description: >-
 
 - 每次實際製作或修改教材，都先讀取 [precision-visual-interaction-qa.md](references/precision-visual-interaction-qa.md)，並依其學科精準度、動畫、無障礙、瀏覽器驗證與部署閘門執行。
 - 當專案是 kickoff 產生的七頁籤 Vite/HTML/CSS/JS 教材，或需要補齊既有骨架時，再讀取 [post-kickoff-polish.md](references/post-kickoff-polish.md)。
-- 部署完成後若使用者要臉書文／FB文／社群貼文／宣傳文，讀取 [facebook-post.md](references/facebook-post.md) 產生中英雙語貼文與複製卡片。
+- 部署完成後若使用者要臉書文／FB文／社群貼文／宣傳文，或說「收工」，讀取 [facebook-post.md](references/facebook-post.md) 產生中英雙語貼文與複製卡片。
 
 ## 核心規則
 
@@ -87,6 +87,14 @@ description: >-
 4. 只提交本次範圍內的檔案，推送到名稱正確的專用 repo。
 5. 等待部署流程完成，再確認公開首頁、CSS、JavaScript、教材資料及分享圖片均可取得。
 6. 在公開版重做關鍵互動與手機版檢查，回報 URL、repo、版本、commit、部署與驗證結果。
+
+## 收工指令
+
+使用者說「收工」時，依序完成，缺一不可：
+
+1. **本地與遠端同步**：working tree 乾淨、`main` 與 `origin/main` 一致、公開網站與關鍵資源（index、CSS、JS、og 圖）回應正常。
+2. **產出中英雙語臉書文**：依 [facebook-post.md](references/facebook-post.md) 撰寫兩篇可獨立發佈的貼文，建立並部署 `share/facebook-post.html`（含 og/twitter meta 與一鍵複製鈕），驗證公開網址回 200 且含 `og:image`，並把文案直接展示給使用者一鍵複製。
+3. **回報**：同步狀態、公開網址、文案頁連結；若連結先前分享過，提醒用 Facebook Sharing Debugger 重新抓取縮圖。
 
 ## 部署閘門
 
