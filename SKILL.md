@@ -1,10 +1,10 @@
 ---
-name: digital-teaching-material-claude
+name: digital-teaching-material-Codex
 description: >-
-  Build, complete, revise, verify, and deploy accurate interactive digital teaching materials for any subject, grade, or lesson structure. Use when Claude Code must turn an HTML/Vite/CSS/JS scaffold or existing lesson into classroom-ready教材; research factual content; choose and refine instructional visuals, SVG/CSS/JS animations, diagrams, maps, charts, timelines, simulations, quizzes, or interactions; prevent inaccurate, decorative, clipped, or overlapping visuals; add accessible controls and social preview metadata; verify desktop/tablet/mobile behavior; document evidence; version the project; or deploy it to a folder-name or English-title GitHub repository and GitHub Pages.
+  Build, complete, revise, verify, and deploy accurate interactive digital teaching materials for any subject, grade, or lesson structure. Use when Codex must turn an HTML/Vite/CSS/JS scaffold or existing lesson into classroom-ready教材; research factual content; choose and refine instructional visuals, SVG/CSS/JS animations, diagrams, maps, charts, timelines, simulations, quizzes, or interactions; prevent inaccurate, decorative, clipped, or overlapping visuals; add accessible controls and social preview metadata; verify desktop/tablet/mobile behavior; document evidence; version the project; or deploy it to a folder-name or English-title GitHub repository and GitHub Pages.
 ---
 
-# 數位互動教材開發 Claude Code 版
+# 數位互動教材開發 Codex 版
 
 把已建立的教材骨架或既有網站完成為內容正確、視覺精準、互動有教學目的、可在課堂與多種裝置使用的數位教材。適用自然、數學、社會、語文、藝術、健康生活及跨領域主題。
 
@@ -24,6 +24,7 @@ description: >-
 - 優先改善教材原生 SVG/CSS/JS 視覺與互動。只有使用者明確要求或點陣圖具有必要教學用途時才使用 raster image。
 - 不用裝飾圖片掩蓋未完成的 SVG、錯誤資料、空白活動或無效互動。
 - 保留專案既有且合理的資訊架構。七頁籤是 kickoff 專案的預設，不要強迫其他有效教材改成七頁籤。
+- 主要教材畫面以單一視窗完成呈現，禁止頁面垂直或水平捲動；以指定的桌機、平板、手機 viewport 檢查 `scrollHeight <= clientHeight` 且 `scrollWidth <= clientWidth`。若內容超出一屏，應精簡、分組、改用頁籤／步驟切換或重排版面，不得靠 `overflow:hidden` 隱藏被截斷的內容。頁籤切換或步驟切換仍須讓全部必要內容可讀取，且不以一頁規範犧牲可讀性與無障礙。
 - 所有標籤、數值、引線和說明文字都避開主體、資料點、座標軸、地名、控制元件與動畫路徑。
 - 支援滑鼠、觸控、鍵盤及 `prefers-reduced-motion`；動態回饋使用適當語意與 `aria-live`。
 - 未完成內容查核、視覺目視檢查、正式建置與多尺寸瀏覽器驗證前，不得部署或宣告完成。
@@ -73,8 +74,8 @@ description: >-
 ### 5. 建置與實際驗證
 
 1. 執行 placeholder 掃描、專案既有 verifier、正式 build、套件安全檢查與 `git diff --check`。
-2. 在至少 1440×1000、768×1024、390×844 三種 viewport 實際逐頁操作。
-3. 檢查頁面內容、錯誤覆蓋層、主控台、失敗請求、水平溢出、裁切、文字重疊、引線、動畫前中後狀態、控制元件、鍵盤與降低動畫模式。
+2. 在至少 1440×1000、768×1024、390×844 三種 viewport 實際操作；每個主要教材畫面都須完整落在一個 viewport，且不得出現垂直或水平頁面捲軸。另檢查互動子區域是否有經設計且可操作的局部捲動；不得以局部捲動掩蓋頁面內容超出一屏。
+3. 檢查頁面內容、錯誤覆蓋層、主控台、失敗請求、頁面垂直與水平捲軸、內容裁切、文字重疊、引線、動畫前中後狀態、控制元件、鍵盤與降低動畫模式。
 4. 對每個主要活動保存截圖並目視檢查，不以 DOM 數量或建置成功取代視覺檢查。
 5. 發現錯誤時保存證據、分類原因、修正後以相同尺寸和步驟重測。
 6. 將環境、測試項目、數值結果、截圖範圍與未解限制寫入 `docs/test-report.md`。
@@ -118,7 +119,7 @@ description: >-
 2. 確認 frontmatter `name` 與資料夾名稱一致，`description` 與觸發情境一致。
 3. 驗證 frontmatter YAML 格式正確（UTF-8、name 為 kebab-case、description 非空）。
 4. 執行至少一項 reference 路由與關鍵規則抽查。
-5. GitHub CLI 已登入時，在同一回合把本機與 `prayer168/digital-teaching-material-claude` 同步（可用 `scripts/publish-skill.ps1`）。
+5. GitHub CLI 已登入時，在同一回合把本機與 `prayer168/digital-teaching-material-Codex` 同步（可用 `scripts/publish-skill.ps1`）。
 
 ## 避免事項
 
